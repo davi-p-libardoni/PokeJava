@@ -9,4 +9,12 @@ public class Pokemon {
 		this.level = level;
 		
 	}
+	
+	public Move getMove(int index) {
+		return this.moves[index];
+	}
+	
+	public Move selectMove() {
+		
+	}
 }
