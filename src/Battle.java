@@ -11,8 +11,8 @@ public class Battle {
 		this.battler1 = battler2;
 	}
 	
-	public boolean runTurn() {
-		Move m1 = battler1.selectMove();
-		Move m2 = battler2.selectMove();
-	}
+	//public boolean runTurn() {
+		//Move m1 = battler1.selectMove();
+		//Move m2 = battler2.selectMove();
+	//}
 }

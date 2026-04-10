@@ -14,7 +14,7 @@ public class Pokemon {
 		return this.moves[index];
 	}
 	
-	public Move selectMove() {
+	//public Move selectMove() {
 		
-	}
+	//}
 }
