@@ -1,6 +1,7 @@
 
 public interface IMove {
 	public String getName();
+	public String getDescription();
 	public Type getType();
 	public int getPP();
 	public int getPower();

@@ -2,7 +2,7 @@
 public class Move implements IMove {
 	private int id;
 	private String name;
-	
+	private String description;
 	private Type type;
 	private int pp;
 	private int power;
@@ -11,7 +11,18 @@ public class Move implements IMove {
 	private DamageClass dmgClass;
 	private MoveEffect effect;
 	
-	public Move(String name, Type type, int pp, int power,int accuracy, int priority, DamageClass dmgClass, MoveEffect effect) {
+	public Move(String name, String description, Type type, int pp, int power,int accuracy, int priority, DamageClass dmgClass) {
+		this.name = name;
+		this.type = type;
+		this.pp = pp;
+		this.power = power;
+		this.accuracy = accuracy;
+		this.priority = priority;
+		this.dmgClass = dmgClass;
+		this.effect = null;
+	}
+	
+	public Move(String name, String description, Type type, int pp, int power,int accuracy, int priority, DamageClass dmgClass, MoveEffect effect) {
 		this.name = name;
 		this.type = type;
 		this.pp = pp;
@@ -24,6 +35,10 @@ public class Move implements IMove {
 	
 	public String getName() {
 		return this.name;
+	}
+
+	public String getDescription() {
+		return this.description;
 	}
 	
 	public Type getType() {
@@ -51,7 +66,7 @@ public class Move implements IMove {
 	}
 	
 	public void execute(Battle b,Pokemon user, Pokemon target) {
-		this.effect.execute(b,user, target);
+		this.effect.apply(b,user, target);
 	}
 	
 	public boolean canExecute(Battle b,Pokemon user, Pokemon target) {
