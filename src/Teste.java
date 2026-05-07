@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import core.Battle;
+import battle.Battle;
 import core.MoveDex;
 import core.Pokemon;
 import core.Type;

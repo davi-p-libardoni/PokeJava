@@ -1,4 +1,4 @@
-package core;
+package move;
 
 public enum DamageClass {
 	PHYSICAL,

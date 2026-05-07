@@ -2,8 +2,8 @@ package moveEffect;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import core.Move;
 import core.Pokemon;
+import move.Move;
 
 public class EffectCritChance extends EffectNone {
 

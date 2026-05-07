@@ -2,11 +2,11 @@ package moveEffect;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import core.Battle;
-import core.BattleActionReport;
-import core.Move;
+import battle.Battle;
+import battle.BattleActionReport;
 import core.Pokemon;
 import core.Stat;
+import move.Move;
 
 public class EffectOmnibuff extends EffectNone {
 	private double chance;
@@ -18,7 +18,7 @@ public class EffectOmnibuff extends EffectNone {
 	@Override
 	protected void applyPostEffect(BattleActionReport report,Battle b,Move m,Pokemon user,Pokemon target) {
 		if(chance == 1 || chance == 0 || ThreadLocalRandom.current().nextDouble() > this.chance) {
-			report.effectMessage = user.getName() + "'s stats all rose!";
+			report.message = user.getName() + "'s stats all rose!";
 			user.applyStatModifier(Stat.ATK, 1);
 			user.applyStatModifier(Stat.DEF, 1);
 			user.applyStatModifier(Stat.SPATK, 1);

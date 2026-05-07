@@ -1,4 +1,4 @@
-package core;
+package battle;
 
 public enum SpecialStat {
 	ACCURACY,

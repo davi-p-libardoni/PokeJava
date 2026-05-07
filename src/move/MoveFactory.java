@@ -1,5 +1,7 @@
-package core;
+package move;
 
+import core.StatusCondition;
+import core.Type;
 import moveEffect.EffectCombo;
 import moveEffect.EffectFixedDamage;
 import moveEffect.EffectMultiHit;

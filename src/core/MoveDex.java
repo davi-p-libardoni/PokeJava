@@ -5,10 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import moveEffect.EffectEnum;
-import moveEffect.EffectNone;
-import moveEffect.EffectStatusCondition;
-import moveEffect.MoveEffect;
+import move.Move;
+import move.MoveFactory;
 
 public class MoveDex {
 	private static Map<String,Move> moveList = new HashMap<>();

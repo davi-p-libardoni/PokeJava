@@ -2,10 +2,10 @@ package moveEffect;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import core.Battle;
-import core.BattleActionReport;
-import core.Move;
+import battle.Battle;
+import battle.BattleActionReport;
 import core.Pokemon;
+import move.Move;
 
 public class EffectFixedDamage extends EffectNone {
 	protected int degree;

@@ -1,4 +1,8 @@
-package core;
+package battle;
+
+import core.Pokemon;
+import core.Type;
+import move.Move;
 
 public class Effectiveness {
 	private static double[][] effectivenessChart;
@@ -54,5 +58,13 @@ public class Effectiveness {
 	
 	public static double check(Type attacker,Type defender) {
 		return effectivenessChart[attacker.ordinal()][defender.ordinal()];
+	}
+	
+	public static double check(Type attacker,Pokemon defender) {
+		double effectiveness = effectivenessChart[attacker.ordinal()][defender.getType(0).ordinal()];
+		if(defender.isDoubleType()) {
+			effectiveness *= effectivenessChart[attacker.ordinal()][defender.getType(1).ordinal()];
+		}
+		return effectiveness;
 	}
 }

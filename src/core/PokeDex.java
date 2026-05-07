@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import move.Move;
+
 public class PokeDex {
 	private static Map<String,Pokemon> pokemonList = new HashMap<>();
 	private static boolean loaded = false;
@@ -47,14 +49,28 @@ public class PokeDex {
 	public static Pokemon getPokemon(String nome,int level,ArrayList<Move> moves) {
 		if(loaded == false) loadPokemon();
         Pokemon base = pokemonList.get(nome);
-        int[] stats = base.getStats();
+        int[] stats = base.getStats().clone();
         stats[0] = ((2 * base.getStat(Stat.HP) * level)/100)+level+10;
         for(int i = 1;i<6;i++) {
         	int baseStt = base.getStat(i);
         	stats[i] = (((2 * baseStt * level)/100)+5);
         	// x Nature quando implementar
         }
-        Pokemon mon = new Pokemon(nome,level,base.getTypes(),stats,moves,base.getId());
+        Pokemon mon = new Pokemon(nome,level,new ArrayList<Type>(base.getTypes()),stats,moves,base.getId());
+        return mon;
+    }
+	
+	public static Pokemon getPokemon(String nome,int level,ArrayList<Move> moves,boolean shiny) {
+		if(loaded == false) loadPokemon();
+        Pokemon base = pokemonList.get(nome);
+        int[] stats = base.getStats().clone();
+        stats[0] = ((2 * base.getStat(Stat.HP) * level)/100)+level+10;
+        for(int i = 1;i<6;i++) {
+        	int baseStt = base.getStat(i);
+        	stats[i] = (((2 * baseStt * level)/100)+5);
+        	// x Nature quando implementar
+        }
+        Pokemon mon = new Pokemon(nome,level,new ArrayList<Type>(base.getTypes()),stats,moves,base.getId(),shiny);
         return mon;
     }
 	

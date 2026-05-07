@@ -1,12 +1,14 @@
 package moveEffect;
 
-import core.Battle;
-import core.BattleActionReport;
-import core.Move;
 import core.Pokemon;
-import core.SpecialStat;
 import core.Stat;
+import move.Move;
+
 import java.util.concurrent.ThreadLocalRandom;
+
+import battle.Battle;
+import battle.BattleActionReport;
+import battle.SpecialStat;
 
 public class EffectStatChange extends EffectNone {
 	int degree;
@@ -69,7 +71,7 @@ public class EffectStatChange extends EffectNone {
 			}else {
 				msg += trgt.getName()+"'s "+statName+" "+sum;
 			}
-			report.effectMessage = msg;
+			report.message = msg;
 		}
 	}
 

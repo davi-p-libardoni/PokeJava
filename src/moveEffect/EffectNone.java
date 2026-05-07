@@ -2,18 +2,18 @@ package moveEffect;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import core.Attempt;
-import core.Battle;
-import core.BattleActionReport;
-import core.DamageClass;
-import core.Effectiveness;
-import core.Move;
-import core.MoveResult;
+import battle.Attempt;
+import battle.Battle;
+import battle.BattleActionReport;
+import battle.Effectiveness;
+import battle.WeatherCondition;
 import core.Pokemon;
 import core.Stat;
 import core.StatusCondition;
 import core.Type;
-import core.WeatherCondition;
+import move.DamageClass;
+import move.Move;
+import move.MoveResult;
 
 public class EffectNone implements MoveEffect {
 	@Override
@@ -23,7 +23,7 @@ public class EffectNone implements MoveEffect {
 		report.user = user;
 		report.target = target;
 		report.result = Attempt.check(b,m,user,target);
-		if(m.getDamageClass() != DamageClass.STATUS && report.result != MoveResult.IMMUNE && report.result != MoveResult.MISSED) {			
+		if(m.getDamageClass() != DamageClass.STATUS && report.result.successful()) {			
 			report.damageDealt = calculateDamage(b, m, user, target,report);
 			target.takeDamage(report.damageDealt);
 		}else {

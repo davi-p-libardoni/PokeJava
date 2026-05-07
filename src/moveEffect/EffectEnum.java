@@ -2,44 +2,44 @@ package moveEffect;
 
 public enum EffectEnum {
 	NONE,
-	STATUS_CONDITION,   // status       //n
-    STATUS_CONDITION_SELF,  //
-    BUFF,               // buff em si       //
-    DEBUFF,             // debuff no alvo   //
-    BUFF_TARGET,        // buffa alvo           //
-    DEBUFF_SELF,        // debuffa a si mesmo   //
-    OMNIBUFF,			// buffa todos os stats
-    WEATHER,            // muda clima       //
-    CRIT,               // chance de crit aumentada     //
-    HEAL,               // cura a si        //
-    CONFUSE,			// confunde
-    DRAIN,              // cura com base no dano causado    //
-    OHKO,               // hit kill     //
-    CRASH,              // toma dano se errar   //
+	STATUS_CONDITION,   // status       						//ss
+    STATUS_CONDITION_SELF,  									//ss
+    BUFF,               // buff em si       					//ss
+    DEBUFF,             // debuff no alvo   					//ss
+    BUFF_TARGET,        // buffa alvo           				//ss
+    DEBUFF_SELF,        // debuffa a si mesmo   				//ss
+    OMNIBUFF,			// buffa todos os stats					//ss
+    WEATHER,            // muda clima       					//
+    CRIT,               // chance de crit aumentada     		//
+    HEAL,               // cura a si       						//
+    CONFUSE,			// confunde								//
+    DRAIN,              // cura com base no dano causado		//
+    OHKO,               // hit kill     						//ss
+    CRASH,              // toma dano se errar   				//
     RECOIL,             // toma dano baseado no dano causado    //
-    MULTI_HIT,          // vários hit, cada um pode errar       //
-    RAMP_MULTI_HIT,     // ^^, cada hit causa mais dano q o ultimo em [chance]% (decimal, 1 = 100%) //
-    COMBO,              // vários hits, apenas 1 attempt        //
+    MULTI_HIT,          // vários hit, cada um pode errar       //ss
+    RAMP_MULTI_HIT,     // ^^, cada hit causa mais dano q o ultimo em [chance]% (decimal, 1 = 100%) //ss
+    COMBO,              // vários hits, apenas 1 attempt        //ss
     CHARGE,             // precisa carregar por 1 turno         //
     RECHARGE,           // fica 1 turno parado dps de usar      //
     FIXED_DAMAGE,       // causa dano fixo (flat,%)             //
-    FLINCH,             // causa flinch no inimigo      //
-    PROTECT,            // protect                      //
-    PAYDAY,             // fodase n tem dinheiro        //
+    FLINCH,             // causa flinch no inimigo      		//
+    PROTECT,            // protect                      		//
+    PAYDAY,             // fodase n tem dinheiro       		 	//
     BUFF_NEXT_MOVE,     // buffa proximo atk do tipo [choice]   //
     FORCE_SWITCH,       // força oponente a trocar (fodase)     //
-    FLY,                // fica alto no céu por 1 turno e atk dps //
+    FLY,                // fica alto no céu por 1 turno			//
     HITS_FLY,           // pode acertar quem ta no fly          //
-    TRAP,               // prende inimigo no campo, n pode trocar //
+    TRAP,               // prende inimigo no campo				//
     DAMAGE_TRAP,        // ^^, causa dano por 2-5 turnos (power/%)[choice] //
     STRUGGLE,           // perde 1/4 da vida maxima como recoil //
     OUTRAGE,            // bate todo turno por 2-3 turnos e dps confunde //
     MEMENTO,            // diminui atk e spatk em 2 e morre     //
     DIVE,               // fly só q agua, 1 turno               //
     HITS_DIVE,          // bate em dive                         //
-    LOW_KICK,           // mais quanto mais pesado oponente (fds) //
-    PRESENT,            // move do delibird, fds
-    RESET_STAT_CHANGES, // autoexplicativo
+    LOW_KICK,           // + quanto + pesado oponente (fds) 	//
+    PRESENT,            // move do delibird, fds				//		
+    RESET_STAT_CHANGES, // autoexplicativo						//
     BOUNCE,
     HITS_BOUNCE,
     TRANSFORM,

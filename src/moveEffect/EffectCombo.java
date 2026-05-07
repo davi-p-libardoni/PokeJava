@@ -1,10 +1,10 @@
 package moveEffect;
 
-import core.Attempt;
-import core.Battle;
-import core.BattleActionReport;
-import core.Move;
+import battle.Attempt;
+import battle.Battle;
+import battle.BattleActionReport;
 import core.Pokemon;
+import move.Move;
 
 public class EffectCombo extends EffectNone {
 	private int hits;
@@ -35,7 +35,7 @@ public class EffectCombo extends EffectNone {
 				report.damageDealt = super.calculateDamage(b, m, user, target,report);
 				target.takeDamage(report.damageDealt);
 			}
-			report.effectMessage = "It hit "+index+" times.";
+			report.message = "It hit "+index+" times.";
 		}else {
 			report.damageDealt = 0;
 		}

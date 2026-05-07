@@ -1,4 +1,4 @@
-package core;
+package battle;
 
 public class Weather {
 	private WeatherCondition condition;

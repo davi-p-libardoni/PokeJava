@@ -1,11 +1,11 @@
 package moveEffect;
 
-import core.Attempt;
-import core.Battle;
-import core.BattleActionReport;
-import core.Move;
-import core.MoveResult;
+import battle.Attempt;
+import battle.Battle;
+import battle.BattleActionReport;
 import core.Pokemon;
+import move.Move;
+import move.MoveResult;
 
 public class EffectPainSplit extends EffectNone {
 
@@ -17,7 +17,7 @@ public class EffectPainSplit extends EffectNone {
 			int split = (int) Math.floor((user.getCurrentHp() + target.getCurrentHp())/2);
 			user.setCurrentHp(split);
 			target.setCurrentHp(split);
-			report.effectMessage = "The battlers shared their pain!";
+			report.message = "The battlers shared their pain!";
 		}
 		return report;
 	}

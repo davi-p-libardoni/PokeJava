@@ -1,5 +1,11 @@
 package core;
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
+
+import battle.ActResult;
+import battle.ActionCapacityReport;
+import battle.SpecialStat;
+import move.Move;
 
 public class Pokemon {
 	private String name;
@@ -12,6 +18,9 @@ public class Pokemon {
 	private int currentHP;
 	private int[] specialStatMods = new int[3];
 	private StatusCondition scond;
+	private boolean shiny = false;
+	
+	private boolean flinched = false;
 	
 	public Pokemon(String name,int level,ArrayList<Type> types,int stats[],ArrayList<Move> moves) {
 		this.name = name;
@@ -37,6 +46,19 @@ public class Pokemon {
 		this.id = id;
 	}
 	
+	public Pokemon(String name, int level, ArrayList<Type> types, int[] stats, ArrayList<Move> moves, int id, boolean shiny) {
+		this.name = name;
+		this.level = level;
+		this.types = types;
+		this.moves = moves;
+		this.stats = stats;
+		this.currentHP = stats[0];
+		this.scond = StatusCondition.NONE;
+		this.specialStatMods = new int[] {0,0,0};
+		this.id = id;
+		this.shiny = shiny;
+	}
+
 	public String getName() {
 		return this.name;
 	}
@@ -71,7 +93,14 @@ public class Pokemon {
 		int modifier = statMods[stat.ordinal()];
 		if(modifier < 0) lower += Math.abs(modifier);
 		if(modifier > 0) upper += modifier;
-		return upper/lower * stats[stat.ordinal()];
+		
+		int condModifier = 1;
+		if(stat == Stat.ATK && this.getStatusCondition() == StatusCondition.BURN ||
+		   stat == Stat.SPD && this.getStatusCondition() == StatusCondition.PARALYZE) {
+			condModifier = 2;
+		}
+		
+		return ((stats[stat.ordinal()] * upper) / lower) / condModifier;
 	}
 	
 	public int getCurrentHp() {
@@ -157,5 +186,35 @@ public class Pokemon {
 		this.currentHP = split;
 		if(this.currentHP > this.getStat(Stat.HP)) this.currentHP = this.getStat(Stat.HP);
 		if(this.currentHP < 0) this.currentHP = 0;
+	}
+
+	public boolean isShiny() {
+		return this.shiny;
+	}
+
+	public ActionCapacityReport canMove() {
+		ActionCapacityReport report = new ActionCapacityReport(this);
+		report.result = ActResult.SUCCESS;
+		if(this.flinched) {
+			this.flinched = false;
+			report.result = ActResult.FLINCHED;
+		}
+		if(this.getStatusCondition() == StatusCondition.SLEEP) {
+			if(attemptWakeUp() == false){
+				report.result = ActResult.SLEEP;				
+			}else {
+				report.result = ActResult.SLEEP_AWOKE;
+			}
+		}
+		if(this.getStatusCondition() == StatusCondition.PARALYZE && ThreadLocalRandom.current().nextInt(101) <= 25) {
+			report.result = ActResult.PARALYZED;
+		}
+		return report;
+	}
+
+	private boolean attemptWakeUp() {
+		boolean result = (ThreadLocalRandom.current().nextBoolean()) && (ThreadLocalRandom.current().nextBoolean());
+		if(result == true) this.scond = StatusCondition.NONE;
+		return result;
 	}
 }

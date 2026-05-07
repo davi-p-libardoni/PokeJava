@@ -2,11 +2,11 @@ package moveEffect;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import core.Attempt;
-import core.Battle;
-import core.BattleActionReport;
-import core.Move;
+import battle.Attempt;
+import battle.Battle;
+import battle.BattleActionReport;
 import core.Pokemon;
+import move.Move;
 
 public class EffectMultiHit extends EffectNone{
 	private int maxHits;
@@ -62,7 +62,7 @@ public class EffectMultiHit extends EffectNone{
 				target.takeDamage(report.damageDealt);
 				this.currentHit++;
 			}
-			report.effectMessage = "It hit "+index+" times.";
+			report.message = "It hit "+index+" times.";
 		}else {
 			report.damageDealt = 0;
 		}

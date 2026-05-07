@@ -1,8 +1,13 @@
-package core;
+package move;
+import battle.Battle;
+import battle.BattleActionReport;
+import core.Pokemon;
+import core.Type;
 import moveEffect.EffectNone;
 import moveEffect.MoveEffect;
 
 public class Move implements IMove {
+	@SuppressWarnings("unused")
 	private int id;
 	private String name;
 	private String description;

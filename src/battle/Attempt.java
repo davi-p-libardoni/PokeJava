@@ -1,5 +1,10 @@
-package core;
+package battle;
 import java.util.concurrent.ThreadLocalRandom;
+
+import core.Pokemon;
+import move.DamageClass;
+import move.Move;
+import move.MoveResult;
 
 public class Attempt {
 	public static MoveResult check(Battle b, Move m, Pokemon attacker, Pokemon defender) {

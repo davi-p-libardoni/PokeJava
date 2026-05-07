@@ -1,8 +1,8 @@
 package moveEffect;
-import core.Battle;
-import core.BattleActionReport;
-import core.Move;
+import battle.Battle;
+import battle.BattleActionReport;
 import core.Pokemon;
+import move.Move;
 
 public interface MoveEffect {
 	BattleActionReport execute(Battle b,Move m, Pokemon user, Pokemon target);

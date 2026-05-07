@@ -2,11 +2,11 @@ package moveEffect;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import core.Battle;
-import core.BattleActionReport;
-import core.Move;
+import battle.Battle;
+import battle.BattleActionReport;
 import core.Pokemon;
 import core.StatusCondition;
+import move.Move;
 
 public class EffectStatusCondition extends EffectNone {
 	protected StatusCondition scond;
@@ -22,10 +22,9 @@ public class EffectStatusCondition extends EffectNone {
 	@Override
 	protected void applyPostEffect(BattleActionReport report, Battle b, Move m, Pokemon user, Pokemon target) {
 		Pokemon trgt = (this.onSelf)?user:target;
-		int threshold = (int)chance * 100;
-		if(!trgt.isFainted() && (chance == 1 || ThreadLocalRandom.current().nextInt() <= threshold)) {
-			if(report.effectMessage==null) report.effectMessage = "";
-			if(report.effectMessage!="") report.effectMessage += "\n";
+		if(report.result.successful() && !trgt.isFainted() && (chance >= 1 || ThreadLocalRandom.current().nextDouble() < chance)) {
+			if(report.message==null) report.message = "";
+			if(!report.message.isEmpty()) report.message += "\n";
 			if(trgt.getStatusCondition() == StatusCondition.NONE) {
 				String msg = trgt.getName() + " has ";
 				switch(scond) {
@@ -47,7 +46,7 @@ public class EffectStatusCondition extends EffectNone {
 					default:
 						break;
 				}
-				report.effectMessage += msg;
+				report.message += msg;
 				trgt.applyStatusCondition(scond);
 			}
 		}

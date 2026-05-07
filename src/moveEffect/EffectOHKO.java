@@ -1,12 +1,12 @@
 package moveEffect;
 
-import core.Attempt;
-import core.Battle;
-import core.BattleActionReport;
-import core.Move;
-import core.MoveResult;
+import battle.Attempt;
+import battle.Battle;
+import battle.BattleActionReport;
 import core.Pokemon;
 import core.Stat;
+import move.Move;
+import move.MoveResult;
 
 public class EffectOHKO implements MoveEffect {
 
@@ -20,7 +20,7 @@ public class EffectOHKO implements MoveEffect {
 		if(report.result == MoveResult.SUCCESS || report.result == MoveResult.SUPER || report.result == MoveResult.NOT_VERY) {
 			report.result = MoveResult.OHKO;
 			report.damageDealt = target.getStat(Stat.HP);
-			report.effectMessage = "It was a One-Hit KO!";
+			report.message = "It was a One-Hit KO!";
 			target.takeDamage(report.damageDealt);
 		}
 		return report;

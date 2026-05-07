@@ -1,4 +1,9 @@
-package core;
+package move;
+
+import battle.Battle;
+import battle.BattleActionReport;
+import core.Pokemon;
+import core.Type;
 
 public abstract class MoveWithPrecondition implements IMove {
 	protected IMove wrappedMove;
