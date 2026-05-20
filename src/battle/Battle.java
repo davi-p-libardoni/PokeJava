@@ -124,6 +124,10 @@ public class Battle {
 		return this.weather.getWeather();
 	}
 
+	public void setWeather(WeatherCondition cond, int duration) {
+		this.weather.setWeather(cond, duration);
+	}
+
 	public int battlerCount(int index,boolean onlyAlive) {
 		if(onlyAlive == false) {
 			return this.battlers.get(index).size();

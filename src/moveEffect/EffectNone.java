@@ -2,6 +2,8 @@ package moveEffect;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+import battle.ActResult;
+import battle.ActionCapacityReport;
 import battle.Attempt;
 import battle.Battle;
 import battle.BattleActionReport;
@@ -13,7 +15,6 @@ import core.StatusCondition;
 import core.Type;
 import move.DamageClass;
 import move.Move;
-import move.MoveResult;
 
 public class EffectNone implements MoveEffect {
 	@Override
@@ -26,8 +27,10 @@ public class EffectNone implements MoveEffect {
 		if(m.getDamageClass() != DamageClass.STATUS && report.result.successful()) {			
 			report.damageDealt = calculateDamage(b, m, user, target,report);
 			target.takeDamage(report.damageDealt);
-		}else {
+		} else if(m.getDamageClass() == DamageClass.STATUS && report.result.successful()){
 			report.damageDealt = 0;
+			report.action = new ActionCapacityReport(user);
+			report.action.result = ActResult.SUCCESS;
 		}
 		applyPostEffect(report,b,m,user,target);
 		return report;

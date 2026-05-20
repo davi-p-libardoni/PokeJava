@@ -182,8 +182,8 @@ public class Pokemon {
 		this.specialStatMods[SpecialStat.CRIT.ordinal()]++;
 	}
 
-	public void setCurrentHp(int split) {
-		this.currentHP = split;
+	public void setCurrentHp(int val) {
+		this.currentHP = val;
 		if(this.currentHP > this.getStat(Stat.HP)) this.currentHP = this.getStat(Stat.HP);
 		if(this.currentHP < 0) this.currentHP = 0;
 	}
@@ -216,5 +216,15 @@ public class Pokemon {
 		boolean result = (ThreadLocalRandom.current().nextBoolean()) && (ThreadLocalRandom.current().nextBoolean());
 		if(result == true) this.scond = StatusCondition.NONE;
 		return result;
+	}
+
+	public void healPercent(int amount) {
+		int current = this.currentHP;
+		int healAmount = (int) this.getStat(0) * (amount/100);
+		this.setCurrentHp(current + healAmount);
+	}
+
+	public void flinch() {
+		this.flinched = true;
 	}
 }

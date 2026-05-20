@@ -9,8 +9,8 @@ public enum EffectEnum {
     BUFF_TARGET,        // buffa alvo           				//ss
     DEBUFF_SELF,        // debuffa a si mesmo   				//ss
     OMNIBUFF,			// buffa todos os stats					//ss
-    WEATHER,            // muda clima       					//
-    CRIT,               // chance de crit aumentada     		//
+    WEATHER,            // muda clima       					//ss
+    CRIT,               // chance de crit aumentada     		//ss
     HEAL,               // cura a si       						//
     CONFUSE,			// confunde								//
     DRAIN,              // cura com base no dano causado		//

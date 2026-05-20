@@ -286,7 +286,6 @@ public class BattleUI extends JFrame {
 			Pokemon battler = info.user;
 			Pokemon target = b.getBattler(info.targetIndex);
 			txtLog.setText("");
-			System.out.println(reports[index].action+"\n"+reports[index].result+"\n\n");
 			if(reports[index].action != null && reports[index].action.result == ActResult.SLEEP_AWOKE) {
 				txtLog.append(battler.getName()+" awoke!\n");
 				updateStatusBar(1 - info.targetIndex);
@@ -475,11 +474,11 @@ public class BattleUI extends JFrame {
             new BattleUI(
             	new Battle(
             			new ArrayList<> (List.of(
-            					PokeDex.getPokemon("Zapdos", 15, new ArrayList<> (List.of(MoveDex.getMove("Thunder Shock"),MoveDex.getMove("Growl"),MoveDex.getMove("Thunder Wave")))),
+            					PokeDex.getPokemon("Zapdos", 15, new ArrayList<> (List.of(MoveDex.getMove("Thunder Shock"),MoveDex.getMove("Growl"),MoveDex.getMove("Thunder Wave"),MoveDex.getMove("Synthesis")))),
             					PokeDex.getPokemon("Articuno",16, new ArrayList<> (List.of(MoveDex.getMove("Icy Wind"),MoveDex.getMove("Surf"))))
             			)),
             			new ArrayList<> (List.of(
-            					PokeDex.getPokemon("Regigigas", 14, new ArrayList<> (List.of(MoveDex.getMove("Hypnosis"))),true),
+            					PokeDex.getPokemon("Regigigas", 14, new ArrayList<> (List.of(MoveDex.getMove("Tackle"))),true),
             					PokeDex.getPokemon("Regirock", 17, new ArrayList<> (List.of(MoveDex.getMove("Rock Throw")))),
             					PokeDex.getPokemon("Regice", 16, new ArrayList<> (List.of(MoveDex.getMove("Blizzard"))))
             			))

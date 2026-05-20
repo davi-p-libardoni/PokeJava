@@ -4,6 +4,8 @@ import core.StatusCondition;
 import core.Type;
 import moveEffect.EffectCombo;
 import moveEffect.EffectFixedDamage;
+import moveEffect.EffectFlinch;
+import moveEffect.EffectHeal;
 import moveEffect.EffectMultiHit;
 import moveEffect.EffectNone;
 import moveEffect.EffectOHKO;
@@ -32,7 +34,6 @@ public class MoveFactory {
 //        effects.put("TRI_ATTACK", new EffectTriAttack());
 //
 //        // --- CURA E DRENO ---
-//        effects.put("HEAL", new EffectHeal());
 //        effects.put("DRAIN", new EffectDrain()); // Giga Drain, Leech Life
 //        effects.put("REST", new EffectRest());
 //        effects.put("LEECH_SEED", new EffectLeechSeed());
@@ -142,6 +143,9 @@ public class MoveFactory {
 		case "COMBO": return new EffectCombo(degree);
 		case "RAMP_MULTI_HIT": return new EffectMultiHit(3,1);
 		case "MULTI_HIT": return new EffectMultiHit();
+		case "HEAL": if(degree == 0) { return new EffectHeal(degree); } else { return new EffectHeal(degree,choice); }
+		case "FLINCH": return new EffectFlinch(chance);
+		
 		default: return new EffectNone();
 		}
 	}
